@@ -3,11 +3,13 @@ import { format } from 'date-fns'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import InfoCard from '../components/InfoCard'
+import Map from '../components/Map'
 
 export default function Search({searchResults}) {
 
     const router=useRouter()
     const {location, startDate, endDate, numberOfGuest} = router.query
+
 
     const formattedStartDate = format(new Date(startDate), 'dd MMM yy')
     const formattedEndDate = format(new Date(endDate), 'dd MMM yy')
@@ -36,6 +38,10 @@ export default function Search({searchResults}) {
                             <InfoCard key={item.img} {...item}/>
                         ))}
                    </div>
+                </section>
+
+                <section className="hidden xl:inline-flex xl:min-w-[600px]">
+                    <Map searchResults={searchResults}/>
                 </section>
             </main>
 
